@@ -6,13 +6,15 @@ module Paperclip
     class Adapter < Paperclip::AbstractAdapter
       REGEXP = /\A[\da-f]{32}\Z/
 
-      def initialize(target)
+      def initialize(target, _options = {})
         ensure_tus_filesystem_storage!
 
         @uid = target
         @file_path = tus_file_path.to_s
         @info = tus_info
         cache_current_values
+        # passing options to super for paperclip 5.2.x
+        super if Paperclip::VERSION.to_f > 5.1
       end
 
       private

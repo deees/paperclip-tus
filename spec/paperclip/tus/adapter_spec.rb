@@ -7,7 +7,13 @@ RSpec.describe Paperclip::Tus::Adapter do
   context 'a new instance' do
     let(:uid) { '16bfe9e51cfbc5e90a7c541a5404be26' }
 
-    subject { Paperclip.io_adapters.for(uid) }
+    subject do
+      if Paperclip::VERSION.to_f <= 5.1
+        Paperclip.io_adapters.for(uid)
+      else
+        Paperclip.io_adapters.for(uid, hash_digest: Digest::MD5)
+      end
+    end
 
     before do
       Tus::Server.opts[:storage] = Tus::Storage::Filesystem.new('spec/fixtures')
