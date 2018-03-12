@@ -8,5 +8,7 @@ gemfile:
   - gemfiles/Gemfile.paperclip-5.0.x
   - gemfiles/Gemfile.paperclip-5.1.x
   - gemfiles/Gemfile.paperclip-5.2.x
+  - gemfiles/Gemfile.paperclip-5.3.x
+  - gemfiles/Gemfile.paperclip-6.0.x
   - Gemfile
 before_install: gem install bundler -v 1.16.1
