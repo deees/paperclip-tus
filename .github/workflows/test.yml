@@ -1,11 +1,22 @@
 name: Tests
-on: [push, pull_request]
+on:
+  pull_request:
+  push:
+    branches:
+      - master
 jobs:
   rspec:
     strategy:
       fail-fast: false
       matrix:
-        gemfile: [gemfiles/Gemfile.paperclip-6.0.x, Gemfile]
+        gemfile: [
+          gemfiles/Gemfile.kt-paperclip-6.2.x,
+          gemfiles/Gemfile.kt-paperclip-6.4.x,
+          gemfiles/Gemfile.kt-paperclip-7.0.x,
+          gemfiles/Gemfile.kt-paperclip-7.1.x,
+          gemfiles/Gemfile.kt-paperclip-7.2.x,
+          Gemfile
+        ]
         ruby: [2.6, 2.7]
     runs-on: ubuntu-latest
     env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps
@@ -15,5 +26,6 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          bundler-cache: false # testing with multiple gemfiles
+      - run: bundle install
       - run: bundle exec rake
