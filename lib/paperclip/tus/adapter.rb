@@ -13,8 +13,7 @@ module Paperclip
         @file_path = tus_file_path.to_s
         @info = tus_info
         cache_current_values
-        # passing options to super for paperclip 5.2.x
-        super if Paperclip::VERSION.to_f > 5.1
+        super
       end
 
       private

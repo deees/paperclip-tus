@@ -8,11 +8,7 @@ RSpec.describe Paperclip::Tus::Adapter do
     let(:uid) { '16bfe9e51cfbc5e90a7c541a5404be26' }
 
     subject do
-      if Paperclip::VERSION.to_f <= 5.1
-        Paperclip.io_adapters.for(uid)
-      else
-        Paperclip.io_adapters.for(uid, hash_digest: Digest::MD5)
-      end
+      Paperclip.io_adapters.for(uid, hash_digest: Digest::MD5)
     end
 
     before do
