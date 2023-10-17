@@ -1,6 +1,6 @@
 # paperclip-tus
 
-[![Build Status](https://travis-ci.org/deees/paperclip-tus.svg?branch=master)](https://travis-ci.org/deees/paperclip-tus)
+[![Build Status](https://github.com/deees/paperclip-tus/actions/workflows/test.yml/badge.svg)](https://github.com/deees/paperclip-tus/actions/workflows/test.yml)
 
 paperclip-tus is paperclip io adapter for [tus-ruby-server](https://github.com/janko-m/tus-ruby-server).
 
