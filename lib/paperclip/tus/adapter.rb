@@ -19,7 +19,7 @@ module Paperclip
       private
 
       def cache_current_values
-        self.original_filename = @info.metadata['filename']
+        self.original_filename = @info.name
         @tempfile = copy_to_tempfile(@file_path)
         @content_type = Paperclip::ContentTypeDetector.new(@file_path).detect
         @size = @info.length
